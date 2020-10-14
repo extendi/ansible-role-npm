@@ -10,7 +10,7 @@
     state: present
     validate_certs: "{{ npm_validate_certs }}"
   when:
-    - ansible_distribution == "Debian"
+    - ansible_os_family == "Debian"
 
 - name: install nodejs deb repository
   apt_repository:
@@ -18,7 +18,7 @@
     state: present
   loop: "{{ npm_apt_repositories }}"
   when:
-    - ansible_distribution == "Debian"
+    - ansible_os_family == "Debian"
 
 - name: install nodejs rpm repository
   yum_repository:
